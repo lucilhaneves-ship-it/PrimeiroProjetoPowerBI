@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Vendas e Entregas</title>
+  <style>
+    :root {
+      --fundo: #0A1F44;
+      --painel: #0F2B5B;
+      --painel2: #133466;
+      --borda: #1E4E9B;
+      --azul: #4DA3FF;
+      --claro: #8FD3FF;
+      --claro2: #C5E8FF;
+      --branco: #fff
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--branco);
+      font: 16px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--claro);
+      outline-offset: 2px
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 16px 48px
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 600
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--claro);
+      margin-bottom: 12px
+    }
+
+    .filtro {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--claro2);
+      font-size: .9rem
+    }
+
+    .btn {
+      background: var(--painel);
+      color: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font: inherit;
+      font-size: .9rem;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      background: var(--borda)
+    }
+
+    .card {
+      background: var(--painel);
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+      padding: 18px
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 14px
+    }
+
+    .kpi span {
+      display: block;
+      color: var(--claro);
+      font-size: .9rem
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 14px;
+      margin-bottom: 14px
+    }
+
+    /* barras */
+    .barra {
+      display: grid;
+      grid-template-columns: minmax(90px, 170px) 1fr auto;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      background: none;
+      border: 0;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      padding: 6px 4px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .barra:hover,
+    .barra.ativa {
+      background: var(--painel2)
+    }
+
+    .barra .nome {
+      font-size: .9rem;
+      color: var(--claro2);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .trilho {
+      height: 14px;
+      background: var(--fundo);
+      border-radius: 7px;
+      overflow: hidden
+    }
+
+    .trilho i {
+      display: block;
+      height: 100%;
+      background: var(--azul);
+      border-radius: 7px
+    }
+
+    .barra.ativa .trilho i {
+      background: var(--claro)
+    }
+
+    .barra .val {
+      font-size: .9rem;
+      min-width: 84px;
+      text-align: right
+    }
+
+    /* rosca */
+    .rosca {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: center
+    }
+
+    .rosca svg {
+      width: 170px;
+      height: 170px;
+      transform: rotate(-90deg)
+    }
+
+    .rosca text {
+      transform: rotate(90deg);
+      transform-origin: 18px 18px;
+      fill: #fff;
+      font-size: 4.5px;
+      text-anchor: middle
+    }
+
+    .leg {
+      list-style: none;
+      font-size: .92rem
+    }
+
+    .leg li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0
+    }
+
+    .leg b {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex: none
+    }
+
+    /* tabela */
+    .topo-tab {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    input[type=search] {
+      background: var(--fundo);
+      color: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font: inherit;
+      min-width: 0;
+      width: 100%;
+      max-width: 280px
+    }
+
+    .rolar {
+      overflow-x: auto;
+      margin-top: 6px
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--borda);
+      font-size: .92rem
+    }
+
+    th {
+      background: var(--borda);
+      position: sticky;
+      top: 0;
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 600
+    }
+
+    tbody tr:nth-child(even) {
+      background: var(--painel2)
+    }
+
+    td.n,
+    th.n {
+      text-align: right
+    }
+
+    tfoot td {
+      background: #1E6FD9;
+      font-weight: 600
+    }
+
+    @media(max-width:900px) {
+      .kpis {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .grade {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:520px) {
+      .wrap {
+        padding: 14px 10px 40px
+      }
+
+      .barra {
+        grid-template-columns: 1fr auto;
+        row-gap: 2px
+      }
+
+      .barra .trilho {
+        grid-column: 1/-1;
+        order: 3
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Vendas e entregas</h1>
+      <div class="filtro" id="filtro" hidden>Filtrando por <strong id="filtroNome"></strong> <button class="btn"
+          id="limpar" type="button">Limpar filtro</button></div>
+    </header>
+
+    <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+    <section class="grade">
+      <div class="card">
+        <h2>Faturamento por produto (clique para filtrar)</h2>
+        <div id="barras"></div>
+      </div>
+      <div class="card">
+        <h2>Faturamento por status do pedido</h2>
+        <div class="rosca" id="rosca"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="topo-tab">
+        <h2>Pedidos</h2>
+        <input type="search" id="busca" placeholder="Buscar cliente ou produto" aria-label="Buscar pedidos">
+      </div>
+      <div class="rolar">
+        <table id="tab"></table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    /* ===== DADOS: substitua pelos seus (exportados do Power BI em CSV/JSON) ===== */
+    const PEDIDOS = [
+      { id: 5001, cliente: "Mercado Central", produto: "Notebook Pro 14", qtd: 2, valor: 12400 },
+      { id: 5002, cliente: "Comercial Paraná", produto: "Smartphone Max", qtd: 3, valor: 10497 },
+      { id: 5003, cliente: "Casa & Cia", produto: "Cadeira Ergonômica", qtd: 5, valor: 5950 },
+      { id: 5004, cliente: "Tech Solutions", produto: "Kit Escritório Premium", qtd: 10, valor: 3290 },
+      { id: 5005, cliente: "Joana Ribeiro", produto: "Mouse Sem Fio", qtd: 20, valor: 1998 },
+      { id: 5006, cliente: "Carlos Mendes", produto: "Fone Bluetooth", qtd: 8, valor: 1759.20 },
+      { id: 5007, cliente: "Alpha Office", produto: "Impressora Multifuncional", qtd: 4, valor: 5196 },
+      { id: 5008, cliente: "Beta Serviços", produto: "Ar-Condicionado 12000 BTUs", qtd: 2, valor: 4798 },
+      { id: 5009, cliente: "Mariana Lopes", produto: "Luminária LED", qtd: 12, valor: 1918.80 },
+      { id: 5010, cliente: "Delta Comércio", produto: "Organizador Modular", qtd: 15, valor: 1948.50 }
+    ];
+    const STATUS = [
+      { nome: "Aprovado", valor: 19540 },
+      { nome: "Entregue", valor: 15800 },
+      { nome: "Faturado", valor: 14410 }
+    ];
+    const CORES = ["#4DA3FF", "#8FD3FF", "#1E6FD9", "#5CC8FF", "#2A5BB5"];
+
+    /* ===== Utilitários ===== */
+    const brl = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    const num = v => v.toLocaleString("pt-BR");
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
+
+    let produtoSel = null, termo = "", ordem = { col: "id", asc: true };
+
+    const filtrados = () => PEDIDOS.filter(p =>
+      (!produtoSel || p.produto === produtoSel) &&
+      (!termo || (p.cliente + " " + p.produto).toLowerCase().includes(termo)));
+
+    /* ===== Indicadores ===== */
+    function kpis() {
+      const base = PEDIDOS.filter(p => !produtoSel || p.produto === produtoSel);
+      const fat = base.reduce((s, p) => s + p.valor, 0), qtd = base.reduce((s, p) => s + p.qtd, 0);
+      const itens = [["Faturamento", brl(fat)], ["Itens vendidos", num(qtd)], ["Pedidos", num(base.length)], ["Ticket médio", brl(base.length ? fat / base.length : 0)]];
+      $("kpis").innerHTML = itens.map(([r, v]) => `<div class="card kpi"><span>${r}</span><strong>${v}</strong></div>`).join("");
+    }
+
+    /* ===== Barras por produto ===== */
+    function barras() {
+      const mapa = {};
+      PEDIDOS.forEach(p => mapa[p.produto] = (mapa[p.produto] || 0) + p.valor);
+      const lista = Object.entries(mapa).sort((a, b) => b[1] - a[1]);
+      const max = lista[0][1];
+      $("barras").innerHTML = lista.map(([n, v]) =>
+        `<button class="barra${n === produtoSel ? " ativa" : ""}" type="button" data-p="${esc(n)}" aria-pressed="${n === produtoSel}">
+       <span class="nome" title="${esc(n)}">${esc(n)}</span>
+       <span class="trilho"><i style="width:${(v / max * 100).toFixed(1)}%"></i></span>
+       <span class="val">${brl(v)}</span></button>`).join("");
+    }
+
+    /* ===== Rosca por status ===== */
+    function rosca() {
+      const total = STATUS.reduce((s, x) => s + x.valor, 0);
+      let acc = 0;
+      const arcos = STATUS.map((s, i) => {
+        const pct = s.valor / total * 100, a = `<circle cx="18" cy="18" r="15.9155" fill="none" stroke="${CORES[i]}" stroke-width="5" stroke-dasharray="${pct} ${100 - pct}" stroke-dashoffset="${-acc}"><title>${s.nome}: ${brl(s.valor)}</title></circle>`;
+        acc += pct; return a;
+      }).join("");
+      const leg = STATUS.map((s, i) => `<li><b style="background:${CORES[i]}"></b>${s.nome}: ${brl(s.valor)} (${(s.valor / total * 100).toFixed(1).replace(".", ",")}%)</li>`).join("");
+      $("rosca").innerHTML = `<svg viewBox="0 0 36 36" role="img" aria-label="Faturamento por status">${arcos}<text x="18" y="19.5">${brl(total).replace(/,\d\d$/, "")}</text></svg><ul class="leg">${leg}</ul>`;
+    }
+
+    /* ===== Tabela ===== */
+    function tabela() {
+      const cols = [["id", "Pedido"], ["cliente", "Cliente"], ["produto", "Produto"], ["qtd", "Qtd", "n"], ["valor", "Valor total", "n"]];
+      const dados = filtrados().sort((a, b) => {
+        const x = a[ordem.col], y = b[ordem.col];
+        const r = typeof x === "number" ? x - y : String(x).localeCompare(String(y), "pt-BR");
+        return ordem.asc ? r : -r;
+      });
+      const tq = dados.reduce((s, p) => s + p.qtd, 0), tv = dados.reduce((s, p) => s + p.valor, 0);
+      $("tab").innerHTML =
+        `<thead><tr>${cols.map(([k, t, c]) => `<th data-c="${k}" class="${c || ""}" tabindex="0">${t}${ordem.col === k ? (ordem.asc ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead>
+     <tbody>${dados.map(p => `<tr><td>${p.id}</td><td>${esc(p.cliente)}</td><td>${esc(p.produto)}</td><td class="n">${num(p.qtd)}</td><td class="n">${brl(p.valor)}</td></tr>`).join("") || `<tr><td colspan="5">Nenhum pedido encontrado.</td></tr>`}</tbody>
+     <tfoot><tr><td colspan="3">Total</td><td class="n">${num(tq)}</td><td class="n">${brl(tv)}</td></tr></tfoot>`;
+    }
+
+    function tudo() {
+      kpis(); barras(); tabela();
+      $("filtro").hidden = !produtoSel;
+      $("filtroNome").textContent = produtoSel || "";
+    }
+
+    /* ===== Eventos ===== */
+    $("barras").addEventListener("click", e => {
+      const b = e.target.closest(".barra"); if (!b) return;
+      produtoSel = produtoSel === b.dataset.p ? null : b.dataset.p; tudo();
+    });
+    $("limpar").addEventListener("click", () => { produtoSel = null; tudo(); });
+    $("busca").addEventListener("input", e => { termo = e.target.value.trim().toLowerCase(); tabela(); });
+    function ordenar(e) {
+      const th = e.target.closest("th"); if (!th) return;
+      if (e.type === "keydown" && e.key !== "Enter") return;
+      const c = th.dataset.c; ordem = { col: c, asc: ordem.col === c ? !ordem.asc : true }; tabela();
+    }
+    $("tab").addEventListener("click", ordenar);
+    $("tab").addEventListener("keydown", ordenar);
+
+    rosca(); tudo();
+  </script>
+</body>
+
+</html>

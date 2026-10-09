@@ -1,0 +1,80 @@
+:root{
+  --fundo:#0A1F44; --painel:#0F2B5B; --painel-2:#133466; --borda:#1E4E9B;
+  --azul:#4DA3FF; --claro:#8FD3FF; --claro-2:#C5E8FF; --branco:#fff;
+  --raio:10px; --max:1280px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fundo);color:var(--branco);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--claro);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* Cabeçalho */
+header{background:#071634;border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:10}
+.barra{display:flex;align-items:center;justify-content:space-between;height:64px}
+.marca{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;color:var(--claro)}
+.marca svg{width:28px;height:28px}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{display:block;padding:8px 14px;border-radius:8px;text-decoration:none;color:var(--claro-2)}
+nav a:hover{background:var(--painel)}
+.menu-btn{display:none;background:none;border:1px solid var(--borda);color:var(--branco);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
+
+/* Introdução */
+.intro{padding:40px 0 20px}
+h1{font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.15;font-weight:600;max-width:20ch;letter-spacing:-.01em}
+.intro p{color:var(--claro-2);margin-top:12px;max-width:60ch}
+
+/* Indicadores */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0}
+.kpi{background:var(--painel);border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px}
+.kpi span{display:block;color:var(--claro);font-size:.9rem}
+.kpi strong{display:block;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;margin-top:2px}
+
+/* Dashboard */
+.painel-topo{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+h2{font-size:1.25rem;font-weight:600;color:var(--claro)}
+.acoes{display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:var(--painel);color:var(--branco);border:1px solid var(--borda);border-radius:8px;padding:9px 16px;font:inherit;font-size:.95rem;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--borda)}
+.btn.principal{background:var(--azul);border-color:var(--azul);color:#06183a;font-weight:600}
+.btn.principal:hover{background:var(--claro)}
+.quadro{background:var(--painel);border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;aspect-ratio:16/9;position:relative}
+.quadro:fullscreen{aspect-ratio:auto;border:0;border-radius:0}
+.quadro iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vazio{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+.vazio p{color:var(--claro-2);max-width:48ch}
+.vazio form{display:flex;gap:8px;width:100%;max-width:560px}
+.vazio input{flex:1;min-width:0;background:var(--fundo);color:var(--branco);border:1px solid var(--borda);border-radius:8px;padding:10px 12px;font:inherit}
+.dica-giro{display:none;color:var(--claro);font-size:.9rem;margin-top:10px}
+.erro{color:#ffb4b4;font-size:.9rem;min-height:1.3em}
+
+/* Guia */
+.guia{padding:44px 0 56px}
+.guia-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.guia article{background:var(--painel-2);border:1px solid var(--borda);border-radius:var(--raio);padding:20px}
+.guia h3{font-size:1.05rem;color:var(--claro);margin-bottom:6px}
+.guia p{color:var(--claro-2);font-size:.95rem}
+.guia .campos{margin-top:10px;font-size:.85rem;color:var(--claro)}
+
+footer{border-top:1px solid var(--borda);background:#071634;color:var(--claro-2);padding:20px 0;font-size:.9rem}
+
+/* Tablet */
+@media (max-width:900px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .guia-grade{grid-template-columns:1fr}
+}
+/* Celular */
+@media (max-width:700px){
+  .wrap{padding:0 14px}
+  .menu-btn{display:block}
+  nav{display:none;position:absolute;top:64px;left:0;right:0;background:#071634;border-bottom:1px solid var(--borda);padding:8px 14px}
+  nav.aberto{display:block}
+  nav ul{flex-direction:column}
+  .quadro{aspect-ratio:4/3}
+  .dica-giro{display:block}
+  .vazio form{flex-direction:column}
+  .acoes{width:100%}
+  .acoes .btn{flex:1;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

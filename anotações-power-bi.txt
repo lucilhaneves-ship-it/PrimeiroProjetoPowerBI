@@ -1,0 +1,41 @@
+Observação sobre o Microsoft Power BI:
+	- Nunca deixa uma linha vazia de informações em um banco de dados ou planilha.
+	- KPI (Key Performance Indicator): Tomada de decisões no Power BI.
+	- ETL (Extract, Transform, Load): É o processo de pegar dados brutos, organiza-los e entrega-los pronto para a análise.
+	- Power BI é gratuito, existe as versões pagas porém o gratuito é o suficiente para realizar todos os trabalhos necessários.
+	
+
+===========================================
+Tabelas Dimensões: São tabelas onde os dados são únicos, registros individuais como por exemplo, Tabela ADM, Tabela Produto, Tabela Funcionário.
+
+Tabelas Fatos: São tabelas onde os registros podem se repetir, vários IDs de outras tabelas presentes em vários registros, exemplo a Tabela vendas ou Tabela Pedidos.
+
+===========================================
+MS Power BI - Processamento de Dados:
+- Os principais banco de dados;
+- Planilhas de MS Excel;
+- Documentos de Texto;
+- Conexão do Power BI Aplicações na Web;
+
+===========================================
+Modelagem de Dados:
+- Ambiente raiz da base dados;
+- Ambiente próprio do Power BI;
+
+===========================================
+Processos de construção de um Projeto no Power BI:
+- 1º Passo: Tratar ou Modelar as informações (Ambiente raiz);
+- 2º Passo: Importar e Configurar os dados no Power BI;
+- 3º Passo: Trabalhar a tipagem dos dados no Power BI;
+- 4º Passo: Construção do Relacionamento de Dados;
+- 5º Passo: Construção dos Relatórios, Gráficos e Dashboards;
+
+===========================================
+Principais linguagens de programação dentro do Power BI:
+Linguagem DAX - É a linguagem de fórmulas usadas para criar cálculos, medidas, médias, calcular colunas de dados carregadas pela importação da base dados, permitindo criar indicações, comparações de períodos e percentuais no ambiente de modelagem e visualização de dados.
+
+Linguagem M - É uma linguagem de fórmulas funcional usada para processos de carga e tratamento de dados. Serve para limpar, transformar, renomear, filtrar e juntar tabelas antes que elas entrem de fato no painel de relatórios (Dashboards). No editor do Power Query, sendo gerada de forma automática muitas vezes ao clicar no botões de interface.
+
+===========================================
+Link do Dashboard Postado:
+https://app.powerbi.com/links/4L1OjKr7wf?ctid=86d3d3c9-fafe-4758-8438-82b551c710b9&pbi_source=linkShare

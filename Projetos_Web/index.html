@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Vendas e Entregas</title>
+  <meta name="description" content="Acompanhe faturamento, pedidos e entregas em um painel interativo do Power BI.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap barra">
+      <a class="marca" href="#topo" aria-label="Painel de Vendas e Entregas">
+        <svg viewBox="0 0 28 28" aria-hidden="true">
+          <rect x="3" y="14" width="5" height="11" rx="1.5" fill="#4DA3FF" />
+          <rect x="11.5" y="7" width="5" height="18" rx="1.5" fill="#8FD3FF" />
+          <rect x="20" y="3" width="5" height="22" rx="1.5" fill="#1E6FD9" />
+        </svg>
+        Vendas e Entregas
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav id="menu" aria-label="Principal">
+        <ul>
+          <li><a href="#indicadores">Indicadores</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#guia">Como ler</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="wrap intro">
+      <h1>Veja quanto vendemos e o que já chegou ao cliente</h1>
+      <p>Faturamento, pedidos e entregas em um só painel. Filtre por período, categoria, setor ou transportadora direto
+        no dashboard abaixo.</p>
+    </section>
+
+    <section class="wrap" id="indicadores" aria-label="Indicadores principais">
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section class="wrap" id="dashboard">
+      <div class="painel-topo">
+        <h2>Dashboard de vendas e entregas</h2>
+        <div class="acoes">
+          <button class="btn principal" id="btnTela" type="button">Tela cheia</button>
+          <a class="btn" id="btnAba" href="#dashboard" target="_blank" rel="noopener" hidden>Abrir em nova aba</a>
+        </div>
+      </div>
+
+      <div class="quadro" id="quadro">
+        <div class="vazio" id="vazio">
+          <h3>Conecte o seu relatório do Power BI</h3>
+          <p>Cole o link de incorporação do relatório publicado. No Power BI Service: Arquivo → Incorporar relatório →
+            Publicar na Web.</p>
+          <form id="form">
+            <label for="url" hidden>Link do relatório</label>
+            <input id="url" type="url" placeholder="https://app.powerbi.com/view?r=..." required>
+            <button class="btn principal" type="submit">Mostrar dashboard</button>
+          </form>
+          <div class="erro" id="erro" role="alert"></div>
+        </div>
+      </div>
+      <p class="dica-giro">Dica: gire o celular para a horizontal ou use Tela cheia para ver o dashboard completo.</p>
+    </section>
+
+    <section class="wrap guia" id="guia">
+      <h2>Como ler o painel</h2>
+      <div class="guia-grade">
+        <article>
+          <h3>Vendas</h3>
+          <p>Mostra o valor vendido ao longo dos meses, por categoria e por produto. Use para saber o que mais fatura.
+          </p>
+          <p class="campos">Campos: valor total, quantidade, categoria, produto</p>
+        </article>
+        <article>
+          <h3>Pedidos</h3>
+          <p>Acompanha cada pedido pelo status, de aprovado a entregue, além de cliente, vendedor e setor.</p>
+          <p class="campos">Campos: status do pedido, cliente, usuário, setor</p>
+        </article>
+        <article>
+          <h3>Entregas</h3>
+          <p>Compara datas de envio e entrega e mostra quantos pedidos estão em preparação, em trânsito ou entregues.
+          </p>
+          <p class="campos">Campos: status da entrega, transportadora, datas</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Painel de Vendas e Entregas. Dados atualizados conforme a última atualização do relatório no Power
+      BI.</div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

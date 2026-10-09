@@ -1,0 +1,51 @@
+ID_Cliente	Primeiro_Nome	Sobrenome	Data_Nascimento	Estado_Civil	Genero	Educacao	ID_Cidade
+5000	Ruben	Jimenez	12-11-1966	Solteiro(a)	Masculino	Mestrado	19
+5001	Arthur	Sai	05-14-1966	Casado(a)	Masculino	Mestrado	23
+5002	Myra	Sai	02-24-1966	Casado(a)	Feminino	Mestrado	4
+5003	Grant	Ferrier	07-27-1966	Casado(a)	Masculino	Mestrado	14
+5004	Angela	Cook	11-06-1965	Solteiro(a)	Feminino	Ensino Fundamental	30
+5005	Natalie	Russell	04-03-1965	Solteiro(a)	Feminino	Ensino Fundamental	24
+5006	Chad	Xu	10-02-1965	Solteiro(a)	Masculino	Ensino Médio	20
+5007	Shane	Subramanian	12-06-1965	Casado(a)	Masculino	Mestrado	22
+5008	Robyn	Diaz	10-26-1965	Casado(a)	Feminino	Mestrado	20
+5009	Ebony	Gomez	09-18-1965	Casado(a)	Feminino	Mestrado	31
+5010	Jessie	Munoz	06-05-1964	Solteiro(a)	Feminino	Ensino Fundamental	27
+5011	Briana	Ruiz	05-09-1964	Solteiro(a)	Feminino	Ensino Fundamental	10
+5012	Terrence	Rai	11-21-1964	Solteiro(a)	Masculino	Ensino Fundamental	7
+5013	Wyatt	Foster	04-23-1964	Solteiro(a)	Masculino	Ensino Fundamental	6
+5014	Kelly	Wedock	04-22-1963	Solteiro(a)	Feminino	Ensino Fundamental	31
+5015	Carolyn	Malhotra	02-21-1966	Casado(a)	Feminino	Mestrado	3
+5016	Katrina	Raje	08-02-1966	Casado(a)	Feminino	Mestrado	12
+5017	Christy	Hu	11-02-1966	Casado(a)	Feminino	Mestrado	27
+5018	Wesley	Liu	05-01-1963	Solteiro(a)	Masculino	Pós-graduação	1
+5019	Gilbert	Zeng	04-25-1962	Casado(a)	Masculino	Pós-graduação	4
+5020	Latasha	Carlson	04-18-1965	Solteiro(a)	Feminino	Pós-graduação	23
+5021	Kathleen	Carlson	05-12-1965	Solteiro(a)	Feminino	Pós-graduação	27
+5022	Tonya	Tang	02-23-1965	Casado(a)	Feminino	Mestrado	5
+5023	Neil	Ramos	11-03-1964	Casado(a)	Masculino	Pós-graduação	16
+5024	Gretchen	Rivas	03-23-1964	Solteiro(a)	Feminino	Pós-graduação	5
+5025	Jaclyn	Rai	06-24-1964	Solteiro(a)	Feminino	Pós-graduação	5
+5026	Melinda	Carlson	12-25-1964	Casado(a)	Feminino	Mestrado	30
+5027	Clayton	Wagner	07-20-1964	Casado(a)	Masculino	Mestrado	30
+5028	Isabella	Powell	11-09-1963	Casado(a)	Feminino	Mestrado	24
+5029	Alberto	Sanz	12-06-1977	Solteiro(a)	Masculino	Ensino Médio	29
+5030	Kristin	Xu	04-05-1979	Solteiro(a)	Feminino	Ensino Médio	15
+5031	Jeffery	Guo	07-18-1979	Solteiro(a)	Masculino	Ensino Médio	15
+5032	Tammy	Martinez	06-16-1979	Solteiro(a)	Feminino	Ensino Médio	4
+5033	Lucas	Almeida	09-18-1981	Casado(a)	Masculino	Superior Completo	9
+5034	Fernanda	Oliveira	03-27-1985	Solteiro(a)	Feminino	Superior Completo	17
+5035	Ricardo	Pereira	08-11-1982	Divorciado(a)	Masculino	Pós-graduação	13
+5036	Juliana	Costa	01-09-1988	Casado(a)	Feminino	Superior Completo	2
+5037	Bruno	Santos	10-30-1983	Solteiro(a)	Masculino	Ensino Médio	21
+5038	Amanda	Souza	05-22-1990	Solteiro(a)	Feminino	Superior Completo	25
+5039	Felipe	Rocha	07-15-1986	Casado(a)	Masculino	Mestrado	8
+5040	Camila	Barbosa	12-01-1992	Solteiro(a)	Feminino	Pós-graduação	18
+5041	Eduardo	Lima	04-17-1984	Casado(a)	Masculino	Superior Completo	11
+5042	Patrícia	Fernandes	06-28-1987	Divorciado(a)	Feminino	Mestrado	26
+5043	Gustavo	Ribeiro	02-14-1991	Solteiro(a)	Masculino	Superior Completo	28
+5044	Marina	Castro	09-05-1993	Solteiro(a)	Feminino	Ensino Superior Incompleto	22
+5045	Rafael	Gomes	03-12-1980	Casado(a)	Masculino	Pós-graduação	1
+5046	Beatriz	Carvalho	07-08-1989	Solteiro(a)	Feminino	Superior Completo	31
+5047	Thiago	Martins	11-23-1985	Casado(a)	Masculino	Ensino Médio	12
+5048	Daniela	Nunes	01-19-1994	Solteiro(a)	Feminino	Superior Completo	6
+5049	Henrique	Lopes	08-02-1987	Divorciado(a)	Masculino	Mestrado	14
